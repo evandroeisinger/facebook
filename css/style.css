@@ -1,3 +1,9 @@
+html > p {
+	padding: 0px 0px 0px 20px;
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 14px;
+	}
+
 body {
 	margin: 0 auto;
 	position: absolute;
