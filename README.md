@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [Facebook Page Dump Exporter](http://evandroeisinger.com/fpde)
 ===
 
@@ -9,3 +10,9 @@ It's a simple Facebook page dump exporter.
 ## Contributing
 
 Anyone and everyone is welcome to contribute.
+=======
+Facebook Page Dump Exporter
+===
+
+Simple Facebook page dump exporter.
+>>>>>>> gh-pages
