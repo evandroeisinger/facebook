@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
+    	<title>Facebook Page Dump Exporter</title>
+    	<!-- meta -->
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>Facebook Page Dump Exporter</title>
         <meta name="description" content="Simple Facebook page dump exporter." />
         <meta name="author" content="Evandro Eisinger" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
+		<!-- styles -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css' />
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
-		<section class="item">
-			<article class="info">
-				<h3>Dump Exporter</h3>
-				<a id="start" href="#">Start</a>
-			</article>
-			<article class="thumb">
-				<h3>Facebook</h3>
-				<p>Hover</p>
-			</article>
-		</section>
+		<div class="container">
+		    <h2>Facebook Page Dump Exporter</h2>
+	    	<section class="setup">
+	    		<input type="text" id="page" placeholder="Page Name">
+	    		<input type="text" id="token" placeholder="Token" value="390648241005588|Dfb2X2n-4MuwRPXLNz8TTkEU2Ug">
+	    		<button id="button">Dump</button>
+	    	</section> <!-- /setup -->
+			<section class="data">
+				<article class="view">
+					<ul></ul>
+				</article> <!-- /view -->
+				<article class="info">
+					<ol></ol>
+				</article> <!-- /console -->
+			</section> <!-- /data -->
+	    </div> <!-- /container -->
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
 		<script src="js/fpde.js"></script>

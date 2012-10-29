@@ -5,17 +5,22 @@
         defaults = {
             token : null,
             page  : null,
-            limit : 25,
             log   : false,
             onStart  : function( data ) {},
             onLoop   : function( data ) {},
-            onFinish : function( data ) {}
+            onFinish : function( data ) {},
+            onError  : function( data ) {}
         },
         
         methods = {
             retrieve : function( path ) {
                 methods.log( 'Fpde: Retrieving data - ' +  path );
-                $.getJSON( path, methods.process );
+                $.ajax({
+                    url      : path,
+                    dataType : 'json',
+                    success  : methods.process,
+                    error    : methods.error
+                });
             },
             process : function( response ) {
                 methods.log( 'Fpde: Processing data retrieved' );
@@ -27,27 +32,30 @@
                             break;
                         case 'paging' :
                                 methods.log( 'Fpde: Searching for more data' );
-                                methods.retrieve(value.next);
+                                methods.retrieve( value.next );
                             break;
                     }
                 });
             },
             insert : function( index,item ) {
                 methods.callback( dump.options.onLoop, item );
-                dump.data.push(item);
+                dump.data.push( item );
                 dump.count++;
             },
             finish : function() {
                 methods.callback( dump.options.onFinish, dump.data );
                 methods.log( 'Fpde: Dump finalized' );
                 methods.log( 'Fpde: <strong>JSON dump</strong>' );
-                methods.log( JSON.stringify(dump.data) );
+                methods.log( JSON.stringify( dump.data ) );
+            },
+            error : function( response ) {
+                methods.callback( dump.options.onError, response );
             },
             callback : function( _function,response ) {
                 typeof _function == 'function' ? _function.call( this, response ) : false;
             },
             log : function( message ) {
-                dump.options.log ? console.log(message) : false;
+                dump.options.log ? console.log( message ) : false;
             }
         }
 
@@ -61,7 +69,7 @@
 
     Fpde.prototype = {
         start : function( path ) {
-            this.path = path ? path : 'https://graph.facebook.com/' + this.options.page + '/feed?limit=' + this.options.limit + '&access_token=' + this.options.token;
+            this.path = path ? path : 'https://graph.facebook.com/' + this.options.page + '/feed?access_token=' + this.options.token;
             methods.callback( this.options.onStart, this.path );
             methods.retrieve( this.path );
         }
