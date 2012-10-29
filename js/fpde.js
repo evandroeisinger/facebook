@@ -6,39 +6,48 @@
             token : null,
             page  : null,
             limit : 25,
-            console : null,
-            log   : false
+            log   : false,
+            onStart  : function( data ) {},
+            onLoop   : function( data ) {},
+            onFinish : function( data ) {}
         },
         
         methods = {
-            process : function( response ){
+            retrieve : function( path ) {
+                methods.log( 'Fpde: Retrieving data - ' +  path );
+                $.getJSON( path, methods.process );
+            },
+            process : function( response ) {
                 methods.log( 'Fpde: Processing data retrieved' );
                 $.each( response, function(index, value) {
-                    switch( index ){
+                    switch ( index ){
                         case 'data' :
                                 methods.log( 'Fpde: More ' + value.length + ' itens retrieved -  Total of ' + dump.count );
                                 value.length ? $.each( value, methods.insert ) : methods.finish();
                             break;
                         case 'paging' :
                                 methods.log( 'Fpde: Searching for more data' );
-                                dump.retrieve(value.next);
+                                methods.retrieve(value.next);
                             break;
                     }
                 });
             },
-            insert : function( index,item ){
+            insert : function( index,item ) {
+                methods.callback( dump.options.onLoop, item );
                 dump.data.push(item);
                 dump.count++;
             },
-            finish : function(){
+            finish : function() {
+                methods.callback( dump.options.onFinish, dump.data );
                 methods.log( 'Fpde: Dump finalized' );
                 methods.log( 'Fpde: <strong>JSON dump</strong>' );
                 methods.log( JSON.stringify(dump.data) );
             },
-            log : function( message ){
-                if ( dump.options.log ){
-                    dump.options.console ? dump.options.console.append('<p>' + message + '</p>') : console.log(message);
-                }
+            callback : function( _function,response ) {
+                typeof _function == 'function' ? _function.call( this, response ) : false;
+            },
+            log : function( message ) {
+                dump.options.log ? console.log(message) : false;
             }
         }
 
@@ -51,10 +60,10 @@
     }
 
     Fpde.prototype = {
-        retrieve: function( path ) {
+        start : function( path ) {
             this.path = path ? path : 'https://graph.facebook.com/' + this.options.page + '/feed?limit=' + this.options.limit + '&access_token=' + this.options.token;
-            methods.log( 'Fpde: Retrieving data - ' +  this.path );
-            $.getJSON( this.path, methods.process );
+            methods.callback( this.options.onStart, this.path );
+            methods.retrieve( this.path );
         }
     }
 
