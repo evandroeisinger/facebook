@@ -43,6 +43,11 @@ It's a simple Facebook page dump exporter. Which returns the entire page content
     <td>Function</td>
     <td>Callback function fired when the process ends</td>
   </tr>
+  <tr>
+    <td>onError</td>
+    <td>Function</td>
+    <td>Callback function fired when some error happens. Return the error log.</td>
+  </tr>
 </table>
 
 ## Usage
@@ -57,7 +62,8 @@ $.Fpde();
 $.Fpde({ 
 	token : '390648241005588|Dfb2X2n-4MuwRPXLNz8TTkEU2Ug',
 	page  : 'wikicidade',
-	onLoop   : function(){ /* ... */ },
+	onStart   : function(){ /* ... */ },
+  onLoop   : function(){ /* ... */ },
 	onFinish : function(){ /* ... */ },
 	onError  : function(){ /* ... */ },
 	log   : true
