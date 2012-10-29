@@ -16,7 +16,7 @@ It's a simple Facebook page dump exporter. Which returns the entire page content
   <tr>
     <td>token</td>
     <td>String</td>
-    <td>Access Token is required to perform API calls requests. You can get it through [Facebook API](https://developers.facebook.com/docs/reference/apis/) or via the [Graph API Explorer](https://developers.facebook.com/tools/explorer).</td>
+    <td>Access Token is required to perform API calls requests. You can get it through Facebook API, (https://developers.facebook.com/docs/reference/apis), or via the Graph API Explorer (https://developers.facebook.com/tools/explorer).</td>
   </tr>
   <tr>
     <td>page</td>
