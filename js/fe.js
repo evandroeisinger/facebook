@@ -14,7 +14,7 @@
         
         methods = {
             retrieve : function( path ) {
-                methods.log( 'Fpde: Retrieving data - ' +  path );
+                methods.log( 'Facebook: Retrieving data - ' +  path );
                 $.ajax({
                     url      : path,
                     dataType : 'json',
@@ -23,15 +23,15 @@
                 });
             },
             process : function( response ) {
-                methods.log( 'Fpde: Processing data retrieved' );
+                methods.log( 'Facebook: Processing data retrieved' );
                 $.each( response, function(index, value) {
                     switch ( index ){
                         case 'data' :
-                                methods.log( 'Fpde: More ' + value.length + ' itens retrieved -  Total of ' + dump.count );
+                                methods.log( 'Facebook: More ' + value.length + ' itens retrieved -  Total of ' + dump.count );
                                 value.length ? $.each( value, methods.insert ) : methods.finish();
                             break;
                         case 'paging' :
-                                methods.log( 'Fpde: Searching for more data' );
+                                methods.log( 'Facebook: Searching for more data' );
                                 methods.retrieve( value.next );
                             break;
                     }
@@ -44,8 +44,8 @@
             },
             finish : function() {
                 methods.callback( dump.options.onFinish, dump.data );
-                methods.log( 'Fpde: Dump finalized' );
-                methods.log( 'Fpde: <strong>JSON dump</strong>' );
+                methods.log( 'Facebook: Dump finalized' );
+                methods.log( 'Facebook: <strong>JSON dump</strong>' );
                 methods.log( JSON.stringify( dump.data ) );
             },
             error : function( response ) {
@@ -59,7 +59,7 @@
             }
         }
 
-    function Fpde( options ) {
+    function Facebook( options ) {
         this.options  = $.extend( {}, defaults, options ) ;
         this.defaults = defaults;
         this.count    = 0;
@@ -67,7 +67,7 @@
         this.data     = [];
     }
 
-    Fpde.prototype = {
+    Facebook.prototype = {
         start : function( path ) {
             this.path = path ? path : 'https://graph.facebook.com/' + this.options.page + '/feed?access_token=' + this.options.token;
             methods.callback( this.options.onStart, this.path );
@@ -75,8 +75,8 @@
         }
     }
 
-    $.Fpde = function( options ) {
-        dump = new Fpde( options );
+    $.Facebook = function( options ) {
+        dump = new Facebook( options );
         return dump;
     };
 

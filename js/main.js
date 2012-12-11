@@ -27,7 +27,7 @@ $('#button').click(function(){
 		info.html('');
 		view.html('');
 		$(this).html('Retrieving...').fadeTo("slow", 0.33);
-		dump = $.Fpde({ 
+		dump = $.Facebook({ 
 			token : token.val(),
 			page  : page.val(),
 		    onLoop   : onLoop,

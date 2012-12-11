@@ -1,9 +1,9 @@
-# [Facebook Page Dump Exporter](http://evandroeisinger.com/fpde)
+# [Facebook Exporter](http://evandroeisinger.com/facebook)
 
 It's a simple Facebook page dump exporter. Which returns the entire page content, so you can manipulate as you like.
 
-* Source: [https://github.com/evandroeisinger/fpde](https://github.com/evandroeisinger/fpde)
-* Homepage: [http://evandroeisinger.com/fpde](http://evandroeisinger.com/fpde)
+* Source: [https://github.com/evandroeisinger/facebook](https://github.com/evandroeisinger/facebook)
+* Homepage: [http://evandroeisinger.com/facebook](http://evandroeisinger.com/facebook)
 
 ## Configuration
 
@@ -84,7 +84,7 @@ dump.start();
 
 ## Browser Support
 
-All modern browsers (Firefox, Chrome, Safari, Opera, IE8+) should be supported. Please [open an issue](https://github.com/evandroeisinger/fpde/issues) if Facebook Page Dump Exporter doesn't work on a particular browser.
+All modern browsers (Firefox, Chrome, Safari, Opera, IE8+) should be supported. Please [open an issue](https://github.com/evandroeisinger/facebook/issues) if Facebook Page Dump Exporter doesn't work on a particular browser.
 
 ## Contributing
 
