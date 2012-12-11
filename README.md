@@ -54,18 +54,18 @@ It's a simple Facebook page dump exporter. Which returns the entire page content
 
 ``` js
 // setup with default options
-var dump = $.Fpde({
+var dump = $.Facebook({
   token : '390648241005588|Dfb2X2n-4MuwRPXLNz8TTkEU2Ug',
   page  : 'wikicidade'
 });
 // or 
-$.Fpde({
+$.Facebook({
   token : '390648241005588|Dfb2X2n-4MuwRPXLNz8TTkEU2Ug',
   page  : 'wikicidade'
 });
 
 // with some custom options
-$.Fpde({ 
+$.Facebook({ 
 	token : '390648241005588|Dfb2X2n-4MuwRPXLNz8TTkEU2Ug',
 	page  : 'wikicidade',
 	onStart   : function(){ /* ... */ },
@@ -76,9 +76,9 @@ $.Fpde({
 });
 
 // start dump
-$.Fpde().start();
+$.Facebook().start();
 // or
-var dump = $.Fpde();
+var dump = $.Facebook();
 dump.start();
 ```
 
