@@ -1,9 +1,24 @@
-# [Facebook Exporter](http://evandroeisinger.com/facebook)
+# [Facebook Exporter](http://evandroeisinger.github.com/facebook)
 
 It's a simple Facebook page dump exporter. Which returns the entire page content, so you can manipulate as you like.
 
-* Source: [https://github.com/evandroeisinger/facebook](https://github.com/evandroeisinger/facebook)
-* Homepage: [http://evandroeisinger.com/facebook](http://evandroeisinger.com/facebook)
+## Usage
+
+``` js
+// setup
+$.Facebook({ 
+	token    : '390648241005588|Dfb2X2n-4MuwRPXLNz8TTkEU2Ug',
+	page     : 'wikicidade',
+	onStart  : function(){ /* ... */ }, // optional
+  	onLoop   : function(){ /* ... */ }, // optional
+	onFinish : function(){ /* ... */ }, // optional
+	onError  : function(){ /* ... */ }, // optional
+	log      : true // optional
+});
+
+// start dump
+$.Facebook().start();
+```
 
 ## Configuration
 
@@ -49,43 +64,3 @@ It's a simple Facebook page dump exporter. Which returns the entire page content
     <td>Callback function fired when some error happens. Return the error log.</td>
   </tr>
 </table>
-
-## Usage
-
-``` js
-// setup with default options
-var dump = $.Facebook({
-  token : '390648241005588|Dfb2X2n-4MuwRPXLNz8TTkEU2Ug',
-  page  : 'wikicidade'
-});
-// or 
-$.Facebook({
-  token : '390648241005588|Dfb2X2n-4MuwRPXLNz8TTkEU2Ug',
-  page  : 'wikicidade'
-});
-
-// with some custom options
-$.Facebook({ 
-	token : '390648241005588|Dfb2X2n-4MuwRPXLNz8TTkEU2Ug',
-	page  : 'wikicidade',
-	onStart   : function(){ /* ... */ },
-  onLoop   : function(){ /* ... */ },
-	onFinish : function(){ /* ... */ },
-	onError  : function(){ /* ... */ },
-	log   : true
-});
-
-// start dump
-$.Facebook().start();
-// or
-var dump = $.Facebook();
-dump.start();
-```
-
-## Browser Support
-
-All modern browsers (Firefox, Chrome, Safari, Opera, IE8+) should be supported. Please [open an issue](https://github.com/evandroeisinger/facebook/issues) if Facebook Page Dump Exporter doesn't work on a particular browser.
-
-## Contributing
-
-Anyone and everyone is welcome to contribute.
